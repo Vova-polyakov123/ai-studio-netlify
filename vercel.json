@@ -1,27 +1,12 @@
 {
-    "functions": {
-        "api/*.js": {
-            "maxDuration": 30
-        }
-    },
-    "headers": [
+    "rewrites": [
+        {
+            "source": "/api/(.*)",
+            "destination": "/api/$1"
+        },
         {
             "source": "/(.*)",
-            "headers": [
-                {
-                    "key": "X-Frame-Options",
-                    "value": "ALLOWALL"
-                },
-                {
-                    "key": "Access-Control-Allow-Origin",
-                    "value": "*"
-                },
-                {
-                    "key": "Access-Control-Allow-Methods",
-                    "value": "GET, POST, OPTIONS"
-                }
-            ]
+            "destination": "/index.html"
         }
-    ],
-    "outputDirectory": "."
+    ]
 }

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Оплата прошла успешно</title>
+    <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            background: linear-gradient(135deg, #0a0c12, #1a1f2a);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 300px;
+            padding: 24px;
+        }
+
+        .checkmark {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .loader {
+            margin-top: 30px;
+            width: 30px;
+            height: 30px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 1s infinite;
+            display: inline-block;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="checkmark">✅</div>
+        <h1>Оплата прошла успешно!</h1>
+        <p>Возвращаемся в приложение...</p>
+        <div class="loader"></div>
+    </div>
+    <script>
+        (async function () {
+            if (window.vkBridge) {
+                try {
+                    await vkBridge.send("VKWebAppInit");
+                    setTimeout(async () => {
+                        try { await vkBridge.send("VKWebAppCloseWebView", { status: "success" }); } catch (e) { }
+                    }, 1500);
+                } catch (e) { }
+            }
+        })();
+    </script>
+</body>
+
+</html>

@@ -1,12 +1,10 @@
 {
-    "name": "vk-ultimate-ai",
-    "version": "2.0.0",
-    "scripts": {
-        "build": "echo 'Static site, no build needed' && exit 0"
+    "name": "ai-content-studio",
+    "version": "1.0.0",
+    "engines": {
+        "node": "20.x"
     },
-    "dependencies": {
-        "axios": "^1.6.7",
-        "openai": "^6.36.0",
-        "uuid": "^9.0.1"
+    "scripts": {
+        "dev": "vercel dev"
     }
 }
