@@ -134,11 +134,6 @@
             right: 12px;
             z-index: 100;
             cursor: pointer;
-            transition: transform 0.2s;
-        }
-
-        .flying-robot-wrapper:hover {
-            transform: scale(1.05);
         }
 
         .robot-icon-new {
@@ -340,11 +335,6 @@
             color: var(--vkui--color_text_secondary);
         }
 
-        .footer-info a {
-            color: #ff7a00;
-            text-decoration: none;
-        }
-
         .toast-msg {
             position: fixed;
             bottom: 30px;
@@ -442,21 +432,12 @@
         .history-item:hover {
             background: var(--vkui--color_background_tertiary);
         }
-
-        .legal-text {
-            font-size: 14px;
-            line-height: 1.5;
-            margin-top: 12px;
-            color: var(--vkui--color_text_primary);
-        }
     </style>
 </head>
 
 <body>
     <div id="onboard" class="onboard">
-        <div class="onboard-robot">
-            <img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png" alt="Робот">
-        </div>
+        <div class="onboard-robot"><img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png" alt="Робот"></div>
         <h2>✨ AI Контент Студия</h2>
         <p>Нейросеть для идей и текстов</p>
         <div
@@ -469,10 +450,8 @@
     </div>
 
     <div class="topStatus" style="display: none;">✨ AI Контент Студия</div>
-
     <div id="flyingRobotWrapper" class="flying-robot-wrapper" style="display: none;">
-        <div class="robot-icon-new">
-            <img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png" alt="Робот">
+        <div class="robot-icon-new"><img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png" alt="Робот">
             <div class="green-dot"></div>
         </div>
     </div>
@@ -481,46 +460,32 @@
         <div class="header">🤖 AI КОНТЕНТ СТУДИЯ <span
                 style="background: #27ae60; padding: 2px 10px; border-radius: 24px; font-size: 11px; margin-left: 8px;">Бесплатно</span>
         </div>
-
-        <div class="greeting-block" id="greetingBlock">
-            ✨ Приветствую... <br> <span style="font-size: 13px;">Что для вас написать?</span>
-        </div>
-
+        <div class="greeting-block" id="greetingBlock">✨ Приветствую...<br><span style="font-size:13px;">Что для вас
+                написать?</span></div>
         <div class="grid" id="modesGrid"></div>
         <div class="tip-panel" id="tipPanel">💡 Нажмите на любой режим, чтобы узнать описание</div>
         <input id="input" class="input" placeholder="О чём написать? Например: продажа дома, фитнес, кофе">
         <button id="generateBtn" class="btn">✨ Сгенерировать</button>
-
         <div class="actions">
-            <div class="action-wrapper">
-                <button class="action" style="background:#ff7a00" id="copyBtn">📋 Копировать</button>
+            <div class="action-wrapper"><button class="action" style="background:#ff7a00" id="copyBtn">📋
+                    Копировать</button>
                 <div class="action-hint">Скопировать текст</div>
             </div>
-            <div class="action-wrapper">
-                <button class="action" style="background:#27ae60" id="supportBtn">📧 Поддержка</button>
+            <div class="action-wrapper"><button class="action" style="background:#27ae60" id="supportBtn">📧
+                    Поддержка</button>
                 <div class="action-hint">Написать в техподдержку</div>
             </div>
-            <div class="action-wrapper">
-                <button class="action" style="background:#2c3e50" id="reviewsBtn">⭐ Оставить отзыв</button>
+            <div class="action-wrapper"><button class="action" style="background:#2c3e50" id="reviewsBtn">⭐ Оставить
+                    отзыв</button>
                 <div class="action-hint">Оцените наше приложение</div>
             </div>
         </div>
-
         <div id="result" class="result">🌟 Введите тему и нажмите «Сгенерировать»</div>
-
         <div class="history-section">
-            <div class="history-header">
-                <span>📜 История генераций</span>
-                <span id="clearHistoryBtn" style="cursor: pointer;">🗑 Очистить</span>
-            </div>
+            <div class="history-header"><span>📜 История генераций</span></div>
             <div id="historyList" class="history-list"></div>
         </div>
-
-        <div class="footer-info">
-            🇷🇺 AI Контент Студия — генерация текстов на русском.<br>
-            <a href="#" id="footerTerms">Пользовательское соглашение</a> | <a href="#" id="footerPolicy">Политика
-                конфиденциальности</a>
-        </div>
+        <div class="footer-info">🇷🇺 AI Контент Студия — генерация текстов на русском.</div>
     </div>
 
     <div id="toastMsg" class="toast-msg"></div>
@@ -530,16 +495,14 @@
             <span class="close-modal" id="closeReviewsModal">&times;</span>
             <h3>📝 Ваше мнение важно</h3>
             <div class="star-rating" id="starRating">
-                <span class="star" data-value="1">★</span>
-                <span class="star" data-value="2">★</span>
-                <span class="star" data-value="3">★</span>
-                <span class="star" data-value="4">★</span>
-                <span class="star" data-value="5">★</span>
+                <span class="star" data-value="1">★</span><span class="star" data-value="2">★</span><span class="star"
+                    data-value="3">★</span><span class="star" data-value="4">★</span><span class="star"
+                    data-value="5">★</span>
             </div>
             <input type="text" id="reviewName" placeholder="Ваше имя"
-                style="width:100%; padding: 12px; border-radius: 40px; margin: 10px 0; border: 1px solid var(--vkui--color_separator_primary); background: var(--vkui--color_background_secondary);">
+                style="width:100%; padding: 12px; border-radius: 40px; margin: 10px 0; border: 1px solid #ccc;">
             <textarea id="reviewText" rows="3" placeholder="Поделитесь впечатлениями..."
-                style="width:100%; border-radius: 24px; padding: 12px; border: 1px solid var(--vkui--color_separator_primary); background: var(--vkui--color_background_secondary);"></textarea>
+                style="width:100%; border-radius: 24px; padding: 12px;"></textarea>
             <button id="submitReviewBtn"
                 style="background:#ff7a00; border:none; border-radius: 50px; padding: 12px; width:100%; font-weight: bold; color:#fff; margin-top: 10px;">Отправить</button>
             <div id="reviewsList" style="margin-top: 16px; max-height: 200px; overflow-y: auto;"></div>
@@ -548,15 +511,14 @@
 
     <script>
         (function () {
-            // === Удаляем фейковые отзывы из localStorage ===
-            localStorage.removeItem('ai_reviews_public');
-            localStorage.removeItem('ai_reviews_public_example');
+            // === ВСТАВЬТЕ СВОЙ КЛЮЧ ОТ OPENROUTER ===
+            const OPENROUTER_API_KEY = "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";
 
+            localStorage.removeItem('ai_reviews_public');
             let currentMode = "ads";
             let reviews = [];
             let historyArr = [];
             let currentStar = 0;
-            let currentUserId = null;
             let currentUserName = "Пользователь";
             const SUPPORT_EMAIL = "ai_content_studio@mail.ru";
 
@@ -575,50 +537,28 @@
                 ads: "#ff7a00", post: "#3498db", sales: "#2ecc71", idea: "#9b59b6",
                 motivation: "#e74c3c", scripts: "#16a085", chat: "#f39c12", viral: "#d35400", business: "#2c3e50"
             };
+            const modeInstructions = {
+                ads: "короткий продающий рекламный текст для VK. Используй эмодзи, выгоды, призыв. Длина 500–1000 символов.",
+                post: "полезный вовлекающий пост для VK. Дай 3–5 фактов или советов. Добавь хештеги и вопрос к аудитории. 800–1500 символов.",
+                sales: "продающий текст с отработкой возражений. Добавь оффер, гарантию, кейс. 600–1200 символов.",
+                idea: "5–7 креативных идей для контента на тему. Каждую идею опиши в 1–2 предложениях. 600–1000 символов.",
+                motivation: "мотивирующий текст, заряжающий энергией. Короткие фразы, личный тон. 500–800 символов.",
+                scripts: "сценарий для Reels на 30–60 секунд. Разбей по времени: хук, проблема, решение, призыв. 500–800 символов.",
+                chat: "готовый ответ менеджера клиенту с возражением. Дай 2 варианта: мягкий и жёсткий. 400–700 символов.",
+                viral: "вирусный пост с неожиданными фактами, интригой. Призыв сохранить и отправить другу. 600–1000 символов.",
+                business: "деловой пост для предпринимателей: проблема, анализ, решение, оффер. 800–1500 символов."
+            };
 
             function showToast(msg) {
                 const t = document.getElementById("toastMsg");
                 if (t) { t.textContent = msg; t.style.opacity = "1"; setTimeout(() => t.style.opacity = "0", 2500); }
             }
 
-            // === Функция очистки от мусора (звёздочки, решётки, лишние дефисы) ===
             function sanitizeText(text) {
                 if (!text) return "";
-                // Удаляем все символы * и # (в том числе ** и ##)
-                let cleaned = text.replace(/[\*#]+/g, '');
-                // Убираем лишние дефисы и звёздочки в начале строк (для маркированных списков)
-                cleaned = cleaned.replace(/^[\-\*]\s+/gm, '• ');
-                // Удаляем подчёркивания для жирного текста, если остались
-                cleaned = cleaned.replace(/_{2,}/g, '');
-                // Приводим множественные пробелы к одному
-                cleaned = cleaned.replace(/\s+/g, ' ');
-                // Убираем пробелы в начале и конце
-                cleaned = cleaned.trim();
-                // Восстанавливаем переносы строк (удаление лишних пробелов не должно убивать переносы)
-                // Но поскольку мы заменили все пробельные символы на один пробел, переносы строк потерялись — нехорошо.
-                // Лучше: удаляем только звёздочки и решётки, а переносы строк оставляем.
-                // Перепишем более аккуратно:
-                return text.replace(/[\*#]+/g, '').trim();
+                return text.replace(/[\*#]/g, '').trim();
             }
 
-            // === Локальная генерация (запасная, если API недоступен) — тоже очищаем ===
-            function generateLocal(theme, mode) {
-                const variants = {
-                    ads: `Реклама для темы «${theme}»:\n- Уникальное предложение\n- Выгода для клиента\n- Призыв к действию прямо сейчас!`,
-                    post: `Пост на тему «${theme}»:\n- Полезный факт\n- Личный опыт\n- Вопрос к аудитории\n\nПодписывайтесь, чтобы не пропустить новое!`,
-                    sales: `Продажи: оффер по теме «${theme}»\nПреимущества: экономия времени, качество, гарантия\nКейсы клиентов\nСпециальная цена до конца недели`,
-                    idea: `Креативные идеи для «${theme}»:\n1. Челлендж в TikTok\n2. Интерактивный опрос\n3. Партнёрство с блогером`,
-                    motivation: `Мотивационное сообщение:\n«${theme} — это ваш шанс. Каждый шаг приближает к цели. Действуйте сегодня!»`,
-                    scripts: `Сценарий видео (30 сек) по теме «${theme}»:\nЗавязка: «Вы знали, что ${theme} может изменить жизнь?»\nОсновная часть: три ключевых факта\nФинал: призыв подписаться и перейти по ссылке`,
-                    chat: `Ответ клиенту:\n«Здравствуйте! Спасибо за интерес к ${theme}. Мы подготовили для вас персональное предложение. Давайте обсудим детали?»`,
-                    viral: `Вирусный заголовок:\n«Как ${theme} взорвал интернет? Секрет, о котором молчат!»\n\nТекст: шокирующие факты, юмор, неожиданный поворот.`,
-                    business: `Бизнес-стратегия для ${theme}:\n1. Анализ целевой аудитории\n2. УТП\n3. Каналы продвижения\n4. План монетизации`
-                };
-                let raw = variants[mode] || variants.ads;
-                return sanitizeText(raw);
-            }
-
-            // === Генерация через API с очисткой ===
             async function generate() {
                 const inputElem = document.getElementById("input");
                 const resultDiv = document.getElementById("result");
@@ -627,28 +567,39 @@
                     resultDiv.innerText = "Пожалуйста, введите тему";
                     return;
                 }
-
                 resultDiv.innerText = "⏳ Генерация текста через нейросеть...";
                 try {
-                    const response = await fetch("/api/generate", {
+                    const instruction = modeInstructions[currentMode] || modeInstructions.post;
+                    const systemPrompt = "Ты профессиональный копирайтер для VK. Пиши живо, с эмодзи, короткими абзацами. Без воды, шаблонов, канцелярита. Не объясняй, как писать, не давай советов — сразу выдавай готовый текст. Используй заголовки, списки, хештеги, призыв к действию.";
+                    const userPrompt = `Тема: ${theme}\nЗадача: ${instruction}\nНапиши уникальный, цепляющий текст строго на эту тему. Сразу выдай готовый пост.`;
+
+                    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
                         method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ theme: theme, mode: currentMode })
+                        headers: {
+                            "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            model: "openai/gpt-4o-mini",
+                            temperature: 1.0,
+                            max_tokens: 2000,
+                            messages: [
+                                { role: "system", content: systemPrompt },
+                                { role: "user", content: userPrompt }
+                            ]
+                        })
                     });
                     const data = await response.json();
-                    if (!response.ok) throw new Error(data.error || "Ошибка генерации");
-                    let rawText = data.text || "Не удалось сгенерировать текст";
+                    if (!response.ok) throw new Error(data.error?.message || "Ошибка генерации");
+                    let rawText = data.choices?.[0]?.message?.content?.trim() || "Не удалось сгенерировать текст";
                     const cleanText = sanitizeText(rawText);
                     resultDiv.innerText = cleanText;
                     addToHistory(theme, cleanText);
                     showToast("✅ Текст готов");
                 } catch (err) {
                     console.error(err);
-                    // fallback на локальную генерацию
-                    const fallbackText = generateLocal(theme, currentMode);
-                    resultDiv.innerText = fallbackText;
-                    addToHistory(theme, fallbackText);
-                    showToast("⚠️ Использован локальный генератор (ошибка API)");
+                    resultDiv.innerText = "❌ Ошибка генерации. Проверьте API-ключ или попробуйте позже.";
+                    showToast("Ошибка соединения с AI");
                 }
             }
 
@@ -667,7 +618,6 @@
                 showToast("Открывается почтовое приложение");
             }
 
-            // === История ===
             function loadHistory() {
                 const s = localStorage.getItem("ai_history_public");
                 historyArr = s ? JSON.parse(s) : [];
@@ -677,7 +627,6 @@
                 localStorage.setItem("ai_history_public", JSON.stringify(historyArr.slice(0, 30)));
             }
             function addToHistory(question, answer) {
-                // Очищаем ответ перед сохранением (на всякий случай)
                 const cleanAnswer = sanitizeText(answer);
                 historyArr.unshift({ question, answer: cleanAnswer, date: new Date().toLocaleString() });
                 if (historyArr.length > 30) historyArr.pop();
@@ -711,44 +660,26 @@
                     });
                 });
             }
-            function clearHistory() {
-                if (confirm("Очистить всю историю?")) {
-                    historyArr = [];
-                    saveHistory();
-                    renderHistory();
-                    showToast("История очищена");
-                }
-            }
 
-            // === Отзывы (пустые) ===
             function loadReviews() {
                 let stored = localStorage.getItem("ai_reviews_public");
                 if (!stored || stored === "[]") {
                     reviews = [];
                     localStorage.setItem("ai_reviews_public", JSON.stringify(reviews));
                 } else {
-                    try {
-                        reviews = JSON.parse(stored);
-                        if (!Array.isArray(reviews)) reviews = [];
-                    } catch (e) { reviews = []; }
+                    try { reviews = JSON.parse(stored); if (!Array.isArray(reviews)) reviews = []; } catch (e) { reviews = []; }
                 }
                 renderReviewsList();
             }
             function renderReviewsList() {
                 const container = document.getElementById("reviewsList");
                 if (!container) return;
-                if (!reviews.length) {
-                    container.innerHTML = "<p style='text-align:center;'>✍️ Пока отзывов нет. Будьте первым!</p>";
-                    return;
-                }
+                if (!reviews.length) { container.innerHTML = "<p style='text-align:center;'>✍️ Пока отзывов нет. Будьте первым!</p>"; return; }
                 let html = "";
                 reviews.forEach(r => {
                     let stars = "";
                     for (let i = 1; i <= 5; i++) stars += (i <= r.star) ? "★" : "☆";
-                    html += `<div style="border-bottom:1px solid #eee; padding: 8px 0;">
-                        <b>${escapeHtml(r.name)}</b> ${stars}<br>
-                        ${escapeHtml(r.text)}
-                     </div>`;
+                    html += `<div style="border-bottom:1px solid #eee; padding: 8px 0;"><b>${escapeHtml(r.name)}</b> ${stars}<br>${escapeHtml(r.text)}</div>`;
                 });
                 container.innerHTML = html;
             }
@@ -776,25 +707,17 @@
                     else star.classList.remove("selected");
                 });
             }
-            function openReviewModal() {
-                document.getElementById("reviewModal").style.display = "flex";
-                loadReviews();
-            }
-            function closeReviewModal() {
-                document.getElementById("reviewModal").style.display = "none";
-            }
+            function openReviewModal() { document.getElementById("reviewModal").style.display = "flex"; loadReviews(); }
+            function closeReviewModal() { document.getElementById("reviewModal").style.display = "none"; }
 
-            // === VK Bridge (реальное имя пользователя) ===
             async function initVK() {
                 if (!window.vkBridge) {
-                    console.warn("VK Bridge не загружен");
                     document.getElementById("greetingBlock").innerHTML = `✨ Приветствую, ${currentUserName}!<br><span style="font-size:13px;">Что для вас написать?</span>`;
                     return;
                 }
                 try {
                     await vkBridge.send("VKWebAppInit");
                     const userInfo = await vkBridge.send("VKWebAppGetUserInfo");
-                    currentUserId = userInfo.id;
                     if (userInfo.first_name) currentUserName = userInfo.first_name;
                     const gb = document.getElementById("greetingBlock");
                     if (gb) gb.innerHTML = `✨ Приветствую, ${currentUserName}!<br><span style="font-size:13px;">Что для вас написать?</span>`;
@@ -827,8 +750,7 @@
                 grid.innerHTML = "";
                 modes.forEach(m => {
                     const card = document.createElement("div");
-                    card.className = "card";
-                    if (currentMode === m.id) card.classList.add("active");
+                    card.className = "card" + (currentMode === m.id ? " active" : "");
                     card.setAttribute("data-mode", m.id);
                     card.innerHTML = `${m.label}<div class="hint">${m.hint}</div>`;
                     card.style.setProperty("--c", modeColors[m.id]);
@@ -841,7 +763,6 @@
                         if (tipPanel && modeTips[m.id]) {
                             tipPanel.innerHTML = `💡 ${modeTips[m.id]}`;
                             tipPanel.style.borderLeftColor = modeColors[m.id];
-                            tipPanel.style.color = modeColors[m.id];
                         }
                     };
                     grid.appendChild(card);
@@ -857,29 +778,21 @@
                 loadHistory();
                 loadReviews();
                 showToast("Добро пожаловать! Выберите режим и тему.");
-                if (!currentUserId) {
-                    initVK().catch(console.warn);
-                }
+                initVK().catch(console.warn);
             }
 
             function showTerms() {
-                alert("Пользовательское соглашение\n1. Приложение предоставляется бесплатно «как есть».\n2. Генерация текстов производится через внешний AI-сервис (OpenRouter).\n3. Пользователь несёт ответственность за использование сгенерированного контента.\n4. Оставляя отзыв, вы даёте согласие на публикацию имени.\n5. По вопросам: ai_content_studio@mail.ru");
+                alert("Пользовательское соглашение\n1. Приложение предоставляется бесплатно «как есть».\n2. Генерация текстов производится через внешний AI-сервис (OpenRouter). Ваш API-ключ хранится локально.\n3. Пользователь несёт ответственность за использование сгенерированного контента.\n4. Оставляя отзыв, вы даёте согласие на публикацию имени.\n5. По вопросам: ai_content_studio@mail.ru");
             }
             function showPrivacy() {
-                alert("Политика конфиденциальности\n✅ Мы не собираем и не передаём персональные данные третьим лицам.\n✅ Имя пользователя (из VK) используется только для приветствия.\n✅ Отзывы и история хранятся только в вашем браузере.\n✅ Вы можете очистить данные в любой момент.\n✅ Данные, отправляемые на AI-сервер: только тема и выбранный режим (без личных данных).");
+                alert("Политика конфиденциальности\n✅ Мы не собираем и не передаём персональные данные третьим лицам.\n✅ Имя пользователя (из VK) используется только для приветствия.\n✅ Отзывы и история хранятся только в вашем браузере.\n✅ Данные, отправляемые на AI-сервер: только тема и выбранный режим (без личных данных).");
             }
 
             function handleBackButton() {
                 const reviewModal = document.getElementById("reviewModal");
-                if (reviewModal.style.display === "flex") {
-                    closeReviewModal();
-                } else {
-                    if (window.vkBridge) {
-                        vkBridge.send("VKWebAppClose");
-                    } else {
-                        history.back();
-                    }
-                }
+                if (reviewModal.style.display === "flex") closeReviewModal();
+                else if (window.vkBridge) vkBridge.send("VKWebAppClose");
+                else history.back();
             }
 
             document.addEventListener("DOMContentLoaded", () => {
@@ -891,29 +804,17 @@
                 document.getElementById("supportBtn")?.addEventListener("click", openSupport);
                 document.getElementById("reviewsBtn")?.addEventListener("click", openReviewModal);
                 document.getElementById("submitReviewBtn")?.addEventListener("click", addReview);
-                document.getElementById("clearHistoryBtn")?.addEventListener("click", clearHistory);
-                document.getElementById("footerTerms")?.addEventListener("click", (e) => { e.preventDefault(); showTerms(); });
-                document.getElementById("footerPolicy")?.addEventListener("click", (e) => { e.preventDefault(); showPrivacy(); });
-                document.getElementById("flyingRobotWrapper")?.addEventListener("click", () => openSupport());
+                document.getElementById("flyingRobotWrapper")?.addEventListener("click", openSupport);
 
-                const closeReviewsModal = document.getElementById("closeReviewsModal");
-                if (closeReviewsModal) closeReviewsModal.addEventListener("click", closeReviewModal);
-                window.addEventListener("click", (e) => {
-                    const modal = document.getElementById("reviewModal");
-                    if (e.target === modal) closeReviewModal();
-                });
+                document.getElementById("closeReviewsModal")?.addEventListener("click", closeReviewModal);
+                window.addEventListener("click", (e) => { if (e.target === document.getElementById("reviewModal")) closeReviewModal(); });
 
                 document.querySelectorAll("#starRating .star").forEach(star => {
-                    star.addEventListener("click", () => {
-                        currentStar = parseInt(star.dataset.value);
-                        renderStarRating();
-                    });
+                    star.addEventListener("click", () => { currentStar = parseInt(star.dataset.value); renderStarRating(); });
                 });
 
                 window.addEventListener("popstate", handleBackButton);
                 history.pushState({ page: "main" }, "");
-
-                initVK().catch(console.warn);
             });
 
             function escapeHtml(str) {
