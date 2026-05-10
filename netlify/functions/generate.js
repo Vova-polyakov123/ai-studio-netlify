@@ -1,18 +1,28 @@
-export default async function handler(req, res) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    if (req.method === 'OPTIONS') return res.status(200).end();
+exports.handler = async (event) => {
+    // CORS headers
+    const headers = {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    };
 
-    if (req.method !== 'POST') {
-        return res.status(405).json({ error: 'Method not allowed' });
+    // Обработка preflight-запроса OPTIONS
+    if (event.httpMethod === 'OPTIONS') {
+        return { statusCode: 200, headers, body: '' };
     }
 
-    const { theme, mode = 'post' } = req.body;
+    // Только POST
+    if (event.httpMethod !== 'POST') {
+        return { statusCode: 405, headers, body: JSON.stringify({ error: 'Method not allowed' }) };
+    }
+
+    // Парсим тело запроса
+    const { theme, mode = 'post' } = JSON.parse(event.body);
     if (!theme?.trim()) {
-        return res.status(400).json({ error: 'theme is required' });
+        return { statusCode: 400, headers, body: JSON.stringify({ error: 'theme is required' }) };
     }
 
+    // Инструкции для каждого режима
     const modeInstructions = {
         ads: 'короткий продающий рекламный текст для VK. Используй эмодзи, выгоды, призыв. Длина 500–1000 символов.',
         post: 'полезный вовлекающий пост для VK. Дай 3–5 фактов или советов. Добавь хештеги и вопрос к аудитории. 800–1500 символов.',
@@ -51,9 +61,9 @@ export default async function handler(req, res) {
 
         const data = await response.json();
         const text = data?.choices?.[0]?.message?.content?.trim() || 'Ошибка генерации. Попробуйте ещё раз.';
-        return res.status(200).json({ text });
+        return { statusCode: 200, headers, body: JSON.stringify({ text }) };
     } catch (err) {
         console.error(err);
-        return res.status(500).json({ error: 'Внутренняя ошибка сервера' });
+        return { statusCode: 500, headers, body: JSON.stringify({ error: 'Внутренняя ошибка сервера' }) };
     }
-}
+};
